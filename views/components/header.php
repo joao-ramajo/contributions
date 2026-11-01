@@ -1,5 +1,5 @@
 <?php
-$isLogged = $_SESSION['user_id'] !== null;
+$isLogged = isset($_SESSION['user_id']) ? $_SESSION['user_id'] !== null : false;
 
 ?>
 <header class="navbar">

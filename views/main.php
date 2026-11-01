@@ -19,9 +19,6 @@ require dirname(__DIR__) . '/views/components/header.php';
                     Registrar aporte
                 </a>
             </div>
-            <div class="goal-name">
-                <?= htmlspecialchars($goal->goal) ?>
-            </div>
             <div class="goal-progress">
                 <?= htmlspecialchars($goal->actualAmount()) ?>
             </div>
