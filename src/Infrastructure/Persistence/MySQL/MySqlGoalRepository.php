@@ -83,13 +83,16 @@ class MySqlGoalRepository implements GoalRepository
         return $this->hydrate($data);
     }
 
-    public function getById(int $id): Goal
+    public function getById(int $userId, int $goalId): Goal
     {
         $stmt = $this->connection->prepare(
-            'SELECT * FROM goals WHERE id = :id'
+            'SELECT * FROM goals WHERE id = :goalId AND user_id = :userId'
         );
 
-        $stmt->execute(['id' => $id]);
+        $stmt->execute([
+            'userId' => $userId,
+            'goalId' => $goalId
+        ]);
 
         $data = $stmt->fetch();
 

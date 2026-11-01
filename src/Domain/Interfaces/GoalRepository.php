@@ -12,7 +12,7 @@ interface GoalRepository
 
     public function getMain(): Goal;
 
-    public function getById(int $id): Goal;
+    public function getById(int $userId, int $goalId): Goal;
 
     public function findAllByUserId(int $id): array;
 }

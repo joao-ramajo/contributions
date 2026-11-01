@@ -24,8 +24,9 @@ class GetGoalDetails
         ResponseInterface $response,
     ): ResponseInterface {
         $id = (int) $request->getAttribute('id');
+        $userId = (int) $request->getAttribute('userId');
 
-        $goal = $this->loadGoalUseCase->execute($id);
+        $goal = $this->loadGoalUseCase->execute($userId, $id);
 
         $monthsRemaining = $goal->monthsRemaining();
 

@@ -13,12 +13,14 @@ class LoadGoalUseCase
         private readonly GoalRepository $goalRepository
     ) {}
 
-    public function execute(?int $id = null): Goal
+    public function execute(int $userId, ?int $id = null): Goal
     {
         if (!$id) {
             return $this->goalRepository->getMain();
         }
 
-        return $this->goalRepository->getById($id);
+        return $this->goalRepository->getById(
+            userId: $userId,
+            goalId: $id);
     }
 }
