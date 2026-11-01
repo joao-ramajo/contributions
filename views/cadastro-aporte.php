@@ -1,3 +1,7 @@
+<?php
+$currentPage = 'cadastro-aporte';
+require dirname(__DIR__) . '/views/components/header.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 

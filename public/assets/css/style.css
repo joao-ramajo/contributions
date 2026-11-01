@@ -1,15 +1,15 @@
-```css
+
 /* ==============================
    RESET E BASE
 ============================== */
 
 * {
-    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
     margin: 0;
-    padding: 40px 20px;
     background: #f5f5f5;
     font-family: Arial, sans-serif;
     color: #222;
@@ -36,38 +36,39 @@ main {
 /* ==============================
    MENU
 ============================== */
-
-.sidebar {
-    width: 220px;
-    min-height: 100vh;
-    padding: 24px 16px;
-    background: #1e293b;
-    color: #fff;
-}
-
-.sidebar h2 {
-    margin-bottom: 32px;
-    font-size: 20px;
-}
-
-.sidebar nav {
+.navbar {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 40px;
 }
 
-.sidebar a {
-    padding: 12px 16px;
-    color: #cbd5e1;
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
     text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.2s;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
-    background: #334155;
-    color: #fff;
+.navbar nav {
+    display: flex;
+    gap: 24px;
+}
+
+.navbar nav a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #16a34a;
 }
 
 /* ==============================
@@ -232,4 +233,3 @@ button {
 button:hover {
     background: #15803d;
 }
-```
