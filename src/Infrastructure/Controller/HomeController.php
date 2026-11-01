@@ -26,7 +26,6 @@ class HomeController
     ): ResponseInterface {
 
         $goal = $this->loadGoalUseCase->execute();
-        $goals = $this->loadGoalListUseCase->execute();
 
         if ($goal) {
             $monthsRemaining = (int) ceil(
