@@ -17,6 +17,6 @@ class LoadGoalUseCase
 
     public function execute(): ?Goal
     {
-        return $this->goalRepository->findMain();
+        return $this->goalRepository->getMain();
     }
 }

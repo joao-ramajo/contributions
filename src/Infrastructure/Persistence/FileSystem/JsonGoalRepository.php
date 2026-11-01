@@ -23,7 +23,7 @@ class JsonGoalRepository implements GoalRepository
         $exists = false;
         // $_depositData = array_map(
         //     fn(Deposit $deposit): array => $deposit->toArray(),
-        //     $goal->history->itens
+        //     $goal->history->items
         // );
 
         if ($file->goals === null) {
@@ -48,7 +48,7 @@ class JsonGoalRepository implements GoalRepository
         file_put_contents($this->db, json_encode($file));
     }
 
-    public function findMain(): ?Goal
+    public function getMain(): Goal
     {
         $file = json_decode(file_get_contents($this->db));
         $goal = null;
@@ -67,19 +67,21 @@ class JsonGoalRepository implements GoalRepository
             }
         }
 
-        if ($goal) {
+        if (!$goal) {
+            throw new DomainException("Meta não encontrada", 404);
+        }
 
-            foreach ($file->deposits as $item) {
-                if ($item->goalId === $goal->id) {
-                    $goal->increment(Deposit::create(
-                        id: $item->id,
-                        goalId: $item->goalId,
-                        amount: $item->amount,
-                        date: new DateTimeImmutable($item->date)
-                    ));
-                }
+        foreach ($file->deposits as $item) {
+            if ($item->goalId === $goal->id) {
+                $goal->increment(Deposit::create(
+                    id: $item->id,
+                    goalId: $item->goalId,
+                    amount: $item->amount,
+                    date: new DateTimeImmutable($item->date)
+                ));
             }
         }
+
 
         return $goal;
     }

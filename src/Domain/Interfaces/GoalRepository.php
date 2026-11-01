@@ -10,7 +10,7 @@ interface GoalRepository
 {
     public function persist(Goal $goal): void;
 
-    public function findMain(): ?Goal;
+    public function getMain(): Goal;
 
     public function findAll(): array;
 }

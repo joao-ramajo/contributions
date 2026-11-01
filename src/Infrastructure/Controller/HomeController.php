@@ -27,28 +27,26 @@ class HomeController
 
         $goal = $this->loadGoalUseCase->execute();
 
-        if ($goal) {
-            $monthsRemaining = (int) ceil(
-                $goal->pendingAmount()->value / $goal->monthlyTarget->value
-            );
+        $monthsRemaining = (int) ceil(
+            $goal->pendingAmount()->value / $goal->monthlyTarget->value
+        );
 
-            $years = intdiv($monthsRemaining, 12);
-            $months = $monthsRemaining % 12;
+        $years = intdiv($monthsRemaining, 12);
+        $months = $monthsRemaining % 12;
 
-            $expectedDate = (new DateTimeImmutable('first day of this month'))
-                ->modify("+{$monthsRemaining} months");
+        $expectedDate = (new DateTimeImmutable('first day of this month'))
+            ->modify("+{$monthsRemaining} months");
 
-            $formatter = new IntlDateFormatter(
-                'pt_BR',
-                IntlDateFormatter::LONG,
-                IntlDateFormatter::NONE,
-                'America/Sao_Paulo',
-                IntlDateFormatter::GREGORIAN,
-                'MMMM yyyy'
-            );
+        $formatter = new IntlDateFormatter(
+            'pt_BR',
+            IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE,
+            'America/Sao_Paulo',
+            IntlDateFormatter::GREGORIAN,
+            'MMMM yyyy'
+        );
 
-            $expectedDateFormatted = $formatter->format($expectedDate);
-        }
+        $expectedDateFormatted = $formatter->format($expectedDate);
 
         ob_start();
 

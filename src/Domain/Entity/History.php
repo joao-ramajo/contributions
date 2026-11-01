@@ -9,16 +9,16 @@ use App\Domain\ValueObject\Money;
 class History
 {
     /**
-     * @param Deposit[] $itens
+     * @param Deposit[] $items
      */
     public function __construct(
-        private(set) array $itens
+        private(set) array $items
     ) {}
 
     public function totalAmount(): Money
     {
         $total = array_reduce(
-            $this->itens,
+            $this->items,
             fn(int $total, Deposit $deposit): int =>
             $total + $deposit->amount->value,
             0
@@ -29,7 +29,6 @@ class History
 
     public function add(Deposit $deposit): void
     {
-        $this->itens[] = $deposit;
+        $this->items[] = $deposit;
     }
-
 }

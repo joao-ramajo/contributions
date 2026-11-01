@@ -10,7 +10,7 @@ final readonly class Money
         public int $value
     ) {}
 
-    public function view(): string
+    public function __toString(): string
     {
         return 'R$ ' . number_format(
             $this->value / 100,
