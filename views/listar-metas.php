@@ -27,12 +27,19 @@ require dirname(__DIR__) . '/views/components/header.php';
 
         <?php foreach ($goals as $goal): ?>
             <section class="goals-list">
-
-                <a href="/metas/<?= htmlspecialchars($goal->id) ?>" class="goal-card">
+                <a href="/metas/<?= htmlspecialchars($goal->id) ?>" class="goal-card <?= $goal->isMain === true ? 'main-goal' : '' ?>">
                     <div class="goal-card-header">
-                        <h2><?= htmlspecialchars($goal->name) ?></h2>
+                        <div class="goal-title">
+                            <h2><?= htmlspecialchars($goal->name) ?></h2>
+
+                            <?php if ($goal->isMain): ?>
+                                <span class="main-goal-label">Principal</span>
+                            <?php endif; ?>
+                        </div>
+
                         <span class="goal-percentage">
-                            <?= htmlspecialchars((string) $goal->progress()) ?>%</span>
+                            <?= htmlspecialchars((string) $goal->progress()) ?>%
+                        </span>
                     </div>
 
                     <div class="goal-progress">

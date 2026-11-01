@@ -299,6 +299,30 @@ button:disabled {
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.goal-card.main-goal {
+    border-color: #15803d;
+}
+
+.goal-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.goal-title h2 {
+    margin: 0;
+}
+
+.main-goal-label {
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 11px;
+    font-weight: 600;
+}
+
 .goal-card:hover {
     border-color: #aaa;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
