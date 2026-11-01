@@ -1,0 +1,27 @@
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE goals (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    target_amount BIGINT NOT NULL,
+    monthly_target BIGINT NOT NULL,
+    is_main BOOLEAN NOT NULL DEFAULT FALSE,
+
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE deposits (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    goal_id BIGINT NOT NULL,
+    amount BIGINT NOT NULL,
+    date DATETIME NOT NULL,
+
+    FOREIGN KEY (goal_id) REFERENCES goals(id)
+);
