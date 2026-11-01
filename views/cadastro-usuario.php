@@ -80,16 +80,7 @@ require dirname(__DIR__) . '/views/components/header.php';
         </div>
     </main>
 
-    <script>
-        const passwordInputs = document.querySelectorAll('.password-input');
-        const checkbox = document.getElementById("showPassword");
-
-        checkbox.addEventListener('change', () => {
-            passwordInputs.forEach((input) => {
-                input.type = checkbox.checked ? 'text' : 'password';
-            });
-        });
-    </script>
+    <script src="/assets/js/showPassword.js"></script>
 </body>
 
 </html>

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller;
 
-use App\Application\LoadDepositList\LoadDepositListUseCase;
 use App\Application\LoadGoal\LoadGoalUseCase;
-use App\Application\LoadGoalList\LoadGoalListUseCase;
 use DateTimeImmutable;
 use IntlDateFormatter;
 use Psr\Http\Message\ResponseInterface;
@@ -16,15 +14,12 @@ class HomeController
 {
     public function __construct(
         private readonly LoadGoalUseCase $loadGoalUseCase,
-        private readonly LoadGoalListUseCase $loadGoalListUseCase,
-        private readonly LoadDepositListUseCase $loadDepositListUseCase
     ) {}
 
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
-
         $goal = $this->loadGoalUseCase->execute();
 
         $monthsRemaining = (int) ceil(
