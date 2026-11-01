@@ -7,11 +7,13 @@ use App\Infrastructure\Controller\GetGoalDetails;
 use App\Infrastructure\Controller\GetGoalForm;
 use App\Infrastructure\Controller\GetGoalList;
 use App\Infrastructure\Controller\GetLoginForm;
+use App\Infrastructure\Controller\GetLogout;
 use App\Infrastructure\Controller\GetRegisterUserForm;
 use App\Infrastructure\Controller\HomeController;
 use App\Infrastructure\Controller\PostDeposit;
 use App\Infrastructure\Controller\PostGoal;
 use App\Infrastructure\Controller\PostLogin;
+use App\Infrastructure\Controller\PostLogout;
 use App\Infrastructure\Controller\PostUser;
 use App\Infrastructure\Middleware\AuthMiddleware;
 use DI\ContainerBuilder;
@@ -49,6 +51,7 @@ $app->group('', function (RouteCollectorProxy $group) {
     $group->get('/cadastrar/aporte', GetDepositForm::class);
     $group->post('/goals', PostGoal::class);
     $group->post('/deposits', PostDeposit::class);
+    $group->post('/logout', PostLogout::class);
 })->add(AuthMiddleware::class);
 
 $app->run();
