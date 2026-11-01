@@ -28,6 +28,8 @@ class PostLogin
 
             $result = $this->loginUseCase->execute(new LoginInput($request->email, $request->password));
 
+            session_regenerate_id(true);
+
             $_SESSION['user_id'] = $result->userId;
 
             return $response
