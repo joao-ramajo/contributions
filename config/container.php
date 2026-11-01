@@ -5,13 +5,10 @@ declare(strict_types=1);
 use App\Domain\Interfaces\DepositRepository;
 use App\Domain\Interfaces\GoalRepository;
 use App\Domain\Interfaces\UserRepository;
-use App\Infrastructure\Persistence\FileSystem\JsonDepositRepository;
-use App\Infrastructure\Persistence\FileSystem\JsonGoalRepository;
+use App\Infrastructure\Persistence\MySQL\MySqlDepositRepository;
 use App\Infrastructure\Persistence\MySQL\MySqlGoalRepository;
 use App\Infrastructure\Persistence\MySQL\MySqlUserRepository;
 use DI\Container;
-use Slim\App;
-
 
 return static function (Container $container): void {
     $pdo = new PDO(
@@ -36,7 +33,7 @@ return static function (Container $container): void {
     );
     $container->set(
         DepositRepository::class,
-        new JsonDepositRepository(dirname(__DIR__) . '/var/db.json')
+        new MySqlDepositRepository($pdo)
     );
 
     $container->set(

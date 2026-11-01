@@ -6,7 +6,6 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\CreateDeposit\CreateDepositInput;
 use App\Application\CreateDeposit\CreateDepositUseCase;
-use App\Domain\Entity\Util;
 use App\Infrastructure\Request\PostDepositRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -23,9 +22,11 @@ class PostDeposit
         ResponseInterface $response,
     ): ResponseInterface {
         try {
+            $userId = $request->getAttribute('userId');
             $request = PostDepositRequest::fromArray($request->getParsedBody());
 
             $this->createDeposit->execute(new CreateDepositInput(
+                userId: $userId,
                 goalId: $request->goalId,
                 amount: $request->amount,
                 date: $request->date
@@ -33,7 +34,7 @@ class PostDeposit
 
             return $response
                 ->withStatus(303)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', "/metas/$request->goalId");
         } catch (Throwable $exception) {
             echo "erro: " . $exception->getMessage();
             die();

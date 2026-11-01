@@ -9,6 +9,7 @@ use DateTimeImmutable;
 readonly class CreateDepositInput
 {
     public function __construct(
+        public int $userId,
         public int $goalId,
         public string $amount,
         public DateTimeImmutable $date

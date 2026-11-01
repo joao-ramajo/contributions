@@ -6,23 +6,29 @@ namespace App\Application\CreateDeposit;
 
 use App\Domain\Entity\Deposit;
 use App\Domain\Interfaces\DepositRepository;
+use App\Domain\Interfaces\GoalRepository;
 
 class CreateDepositUseCase
 {
     public function __construct(
-        private readonly DepositRepository $depositRepository
+        private readonly DepositRepository $depositRepository,
+        private readonly GoalRepository $goalRepository
     ) {}
 
     public function execute(CreateDepositInput $input): void
     {
-        $id = random_int(1, PHP_INT_MAX);;
+        $this->ensureUserHasAccess($input->userId, $input->goalId);
         $deposit = Deposit::create(
-            id: $id,
             goalId: $input->goalId,
             amount: $input->amount,
             date: $input->date
         );
 
         $this->depositRepository->persist($deposit);
+    }
+
+    private function ensureUserHasAccess(int $userId, int $goalId): void
+    {
+        $this->goalRepository->getById($userId, $goalId);
     }
 }
