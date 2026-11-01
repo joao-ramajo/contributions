@@ -37,5 +37,10 @@ return (new PhpCsFixer\Config())
         'no_useless_nullsafe_operator' => true,
         'declare_strict_types' => true,
         'no_empty_statement' => true,
+        'global_namespace_import' => [
+            'import_classes' => true,
+            'import_constants' => false,
+            'import_functions' => false,
+        ],
     ])
     ->setFinder($finder);

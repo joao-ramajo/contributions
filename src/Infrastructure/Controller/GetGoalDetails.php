@@ -33,7 +33,7 @@ class GetGoalDetails
         $years = intdiv($monthsRemaining, 12);
         $months = $monthsRemaining % 12;
 
-        $expectedDate = (new DateTimeImmutable('first day of this month'))
+        $expectedDate = new DateTimeImmutable('first day of this month')
             ->modify("+{$monthsRemaining} months");
 
         $formatter = new IntlDateFormatter(

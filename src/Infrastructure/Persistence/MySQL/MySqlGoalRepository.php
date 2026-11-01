@@ -15,7 +15,7 @@ use PDO;
 class MySqlGoalRepository implements GoalRepository
 {
     public function __construct(
-        private PDO $connection
+        private readonly PDO $connection
     ) {
     }
 

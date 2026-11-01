@@ -12,7 +12,7 @@ use PDO;
 class MySqlUserRepository implements UserRepository
 {
     public function __construct(
-        private PDO $connection
+        private readonly PDO $connection
     ) {
     }
 

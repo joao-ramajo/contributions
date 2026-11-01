@@ -6,6 +6,7 @@ namespace App\Infrastructure\Persistence\MySQL;
 
 use App\Domain\Entity\Deposit;
 use App\Domain\Interfaces\DepositRepository;
+use DateTimeImmutable;
 use PDO;
 
 class MySqlDepositRepository implements DepositRepository
@@ -69,7 +70,7 @@ class MySqlDepositRepository implements DepositRepository
                 id: (int) $data['id'],
                 goalId: (int) $data['goal_id'],
                 amount: $data['amount'],
-                date: new \DateTimeImmutable($data['date'])
+                date: new DateTimeImmutable($data['date'])
             ),
             $stmt->fetchAll(PDO::FETCH_ASSOC)
         );

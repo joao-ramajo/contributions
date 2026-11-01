@@ -17,7 +17,7 @@ final class AuthMiddleware implements MiddlewareInterface
         RequestHandlerInterface $handler
     ): ResponseInterface {
         if (!isset($_SESSION['user_id'])) {
-            $response = (new ResponseFactory())->createResponse(302);
+            $response = new ResponseFactory()->createResponse(302);
 
             return $response->withHeader('Location', '/login');
         }
