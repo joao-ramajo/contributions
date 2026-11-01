@@ -21,7 +21,7 @@ unset($_SESSION['error']);
         <div class="card">
             <div class="card-title">
                 <h1>Entrar</h1>
-                <p>Acesse sua conta para acompanhar suas metas financeiras.</p>
+                <p style="font-size: 12px;">Acesse sua conta para acompanhar suas metas financeiras.</p>
             </div>
 
             <form action="/login" method="POST">
