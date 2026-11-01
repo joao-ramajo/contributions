@@ -7,6 +7,7 @@ namespace App\Infrastructure\Controller;
 use App\Application\LoadDepositList\LoadDepositListUseCase;
 use App\Application\LoadGoal\LoadGoalUseCase;
 use App\Application\LoadGoalList\LoadGoalListUseCase;
+use App\Core\View;
 use App\Domain\Entity\Util;
 use DateTimeImmutable;
 use IntlDateFormatter;
@@ -22,6 +23,7 @@ class GetGoalDetails
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
+        View $view
     ): ResponseInterface {
         $id = (int) $request->getAttribute('id');
         $userId = (int) $request->getAttribute('userId');
@@ -47,14 +49,13 @@ class GetGoalDetails
 
         $expectedDateFormatted = $formatter->format($expectedDate);
 
-        ob_start();
+        $view->init('main', [
+            'expectedDateFormatted' => $expectedDateFormatted,
+            'years' => $years,
+            'months' => $months,
+            'goal' => $goal
+        ]);
 
-        require dirname(__DIR__, 3) . '/views/main.php';
-
-        $html = ob_get_clean();
-
-        $response->getBody()->write($html);
-
-        return $response->withHeader('Content-Type', 'text/html; charset=UTF-8');
+        return $view->render($response)->withHeader('Content-Type', 'text/html; charset=UTF-8');
     }
 }

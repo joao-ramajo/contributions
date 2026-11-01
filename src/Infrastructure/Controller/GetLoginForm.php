@@ -4,23 +4,19 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller;
 
+use App\Core\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class GetLoginForm
 {
     public function __invoke(
-        ServerRequestInterface $request,
         ResponseInterface $response,
+        View $view
     ): ResponseInterface {
-        ob_start();
+        $view->init('login');
 
-        require dirname(__DIR__, 3) . '/views/login.php';
-
-        $html = ob_get_clean();
-
-        $response->getBody()->write($html);
-
-        return $response->withHeader('Content-Type', 'text/html; charset=UTF-8');
+        return $view->render($response)
+            ->withHeader('Content-Type', 'text/html; charset=UTF-8');
     }
 }

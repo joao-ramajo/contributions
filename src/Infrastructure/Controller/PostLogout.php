@@ -16,7 +16,6 @@ use Throwable;
 class PostLogout
 {
     public function __invoke(
-        ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
         unset($_SESSION['user_id']);
