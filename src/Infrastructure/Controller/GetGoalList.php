@@ -6,6 +6,7 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\LoadGoalList\LoadGoalListUseCase;
 use App\Domain\Entity\Util;
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -22,7 +23,6 @@ class GetGoalList
         $userId = $request->getAttribute('userId');
 
         $goals = $this->loadGoalListUseCase->execute($userId);
-
 
         ob_start();
 

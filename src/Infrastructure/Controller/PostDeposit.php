@@ -21,23 +21,18 @@ class PostDeposit
         ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
-        try {
-            $userId = $request->getAttribute('userId');
-            $request = PostDepositRequest::fromArray($request->getParsedBody());
+        $userId = $request->getAttribute('userId');
+        $request = PostDepositRequest::fromArray($request->getParsedBody());
 
-            $this->createDeposit->execute(new CreateDepositInput(
-                userId: $userId,
-                goalId: $request->goalId,
-                amount: $request->amount,
-                date: $request->date
-            ));
+        $this->createDeposit->execute(new CreateDepositInput(
+            userId: $userId,
+            goalId: $request->goalId,
+            amount: $request->amount,
+            date: $request->date
+        ));
 
-            return $response
-                ->withStatus(303)
-                ->withHeader('Location', "/metas/$request->goalId");
-        } catch (Throwable $exception) {
-            echo "erro: " . $exception->getMessage();
-            die();
-        }
+        return $response
+            ->withStatus(303)
+            ->withHeader('Location', "/metas/$request->goalId");
     }
 }

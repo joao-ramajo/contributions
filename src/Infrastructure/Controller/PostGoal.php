@@ -40,9 +40,6 @@ class PostGoal
             return $response
                 ->withHeader('Location', '/cadastrar/meta')
                 ->withStatus(303);
-        } catch (Throwable $exception) {
-            echo "erro: " . $exception->getMessage();
-            die();
         }
     }
 }

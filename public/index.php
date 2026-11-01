@@ -16,6 +16,7 @@ use App\Infrastructure\Controller\PostLogin;
 use App\Infrastructure\Controller\PostLogout;
 use App\Infrastructure\Controller\PostUser;
 use App\Infrastructure\Middleware\AuthMiddleware;
+use App\Infrastructure\Middleware\ExceptionMiddleware;
 use DI\ContainerBuilder;
 use DI\Bridge\Slim\Bridge;
 use Slim\Routing\RouteCollectorProxy;
@@ -53,5 +54,7 @@ $app->group('', function (RouteCollectorProxy $group) {
     $group->post('/deposits', PostDeposit::class);
     $group->post('/logout', PostLogout::class);
 })->add(AuthMiddleware::class);
+
+$app->add(ExceptionMiddleware::class);
 
 $app->run();

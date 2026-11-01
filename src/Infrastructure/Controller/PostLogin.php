@@ -41,9 +41,6 @@ class PostLogin
             return $response
                 ->withHeader('Location', '/login')
                 ->withStatus(303);
-        } catch (Throwable $exception) {
-            echo "erro: " . $exception->getMessage();
-            die();
         }
     }
 }

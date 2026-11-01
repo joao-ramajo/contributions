@@ -9,6 +9,8 @@ use App\Infrastructure\Persistence\MySQL\MySqlDepositRepository;
 use App\Infrastructure\Persistence\MySQL\MySqlGoalRepository;
 use App\Infrastructure\Persistence\MySQL\MySqlUserRepository;
 use DI\Container;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Slim\Psr7\Factory\ResponseFactory;
 
 return static function (Container $container): void {
     $pdo = new PDO(
@@ -39,5 +41,10 @@ return static function (Container $container): void {
     $container->set(
         UserRepository::class,
         new MySqlUserRepository($pdo)
+    );
+
+    $container->set(
+        ResponseFactoryInterface::class,
+        DI\autowire(ResponseFactory::class)
     );
 };

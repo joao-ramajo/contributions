@@ -19,15 +19,10 @@ class PostLogout
         ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
-        try {
-            unset($_SESSION['user_id']);
+        unset($_SESSION['user_id']);
 
-            return $response
-                ->withStatus(303)
-                ->withHeader('Location', '/login');
-        } catch (Throwable $exception) {
-            echo "erro: " . $exception->getMessage();
-            die();
-        }
+        return $response
+            ->withStatus(303)
+            ->withHeader('Location', '/login');
     }
 }

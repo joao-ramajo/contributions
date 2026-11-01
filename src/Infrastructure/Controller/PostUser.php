@@ -25,19 +25,14 @@ class PostUser
         ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
-        try {
-            $request = PostUserRequest::fromArray($request->getParsedBody());
+        $request = PostUserRequest::fromArray($request->getParsedBody());
 
-            $input = new CreateUserInput($request->name, $request->email, $request->password, $request->passwordConfirmation);
+        $input = new CreateUserInput($request->name, $request->email, $request->password, $request->passwordConfirmation);
 
-            $this->createUserUseCase->execute($input);
+        $this->createUserUseCase->execute($input);
 
-            return $response
-                ->withStatus(303)
-                ->withHeader('Location', '/login');
-        } catch (Throwable $exception) {
-            echo "erro: " . $exception->getMessage();
-            die();
-        }
+        return $response
+            ->withStatus(303)
+            ->withHeader('Location', '/login');
     }
 }

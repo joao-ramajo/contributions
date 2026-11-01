@@ -393,3 +393,21 @@ form .button-link {
     cursor: pointer;
     font-size: 15px;
 }
+
+.error-card {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.error-code {
+    color: #16a34a;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.error-message {
+    color: #666;
+    font-size: 15px;
+    margin: 16px 0 24px;
+}
