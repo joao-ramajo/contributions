@@ -20,6 +20,10 @@
         "lint:fix": "php-cs-fixer fix",
         "lint:check": "php-cs-fixer fix --dry-run --diff",
         "rector:dry": "vendor/bin/rector process --dry-run",
-        "rector:fix": "vendor/bin/rector process"
+        "rector:fix": "vendor/bin/rector process",
+        "qa": [
+            "@rector:fix",
+            "@lint:fix"
+        ]
     }
 }
