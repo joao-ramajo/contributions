@@ -6,10 +6,15 @@ namespace App\Domain\Entity;
 
 class Util
 {
-    public static function dd(mixed $var): void
+    public static function dd(mixed $var, bool $dump = false): void
     {
         echo "<pre>";
-        print_r($var);
+        if ($dump) {
+            var_dump($var);
+        } else {
+            print_r($var);
+        }
+
         echo "</pre>";
         die();
     }

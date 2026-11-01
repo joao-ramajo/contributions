@@ -42,7 +42,7 @@ $app->get('/cadastro', GetRegisterUserForm::class);
 $app->post('/register', PostUser::class);
 
 $app->group('', function (RouteCollectorProxy $group) {
-    $group->get('/', HomeController::class);
+    $group->get('/', GetGoalList::class);
     $group->get('/metas', GetGoalList::class);
     $group->get('/metas/{id}', GetGoalDetails::class);
     $group->get('/cadastrar/meta', GetGoalForm::class);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Application\CreateGoal;
 
 use App\Domain\Entity\Goal;
+use App\Domain\Entity\Util;
 use App\Domain\Exceptions\GoalException;
 use App\Domain\Interfaces\GoalRepository;
 

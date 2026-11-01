@@ -29,7 +29,6 @@ class PostGoal
             $userId = $request->getAttribute('userId');
             $request = PostGoalRequest::fromArray($request->getParsedBody());
 
-
             $this->useCase->execute(new CreateGoalInput($request->name, $request->targetAmount, $request->monthlyTarget, $request->isMain, $userId));
 
             return $response

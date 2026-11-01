@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence\MySQL;
 use App\Domain\Entity\Deposit;
 use App\Domain\Entity\Goal;
 use App\Domain\Entity\History;
+use App\Domain\Entity\Util;
 use App\Domain\Exceptions\GoalException;
 use App\Domain\Interfaces\GoalRepository;
 use DateTimeImmutable;
@@ -35,7 +36,7 @@ class MySqlGoalRepository implements GoalRepository
                 'name' => $goal->name,
                 'target_amount' => $goal->targetAmount->value,
                 'monthly_target' => $goal->monthlyTarget->value,
-                'is_main' => $goal->isMain,
+                'is_main' => (int) $goal->isMain,
             ]);
 
             return;
@@ -62,7 +63,7 @@ class MySqlGoalRepository implements GoalRepository
             'name' => $goal->name,
             'target_amount' => $goal->targetAmount->value,
             'monthly_target' => $goal->monthlyTarget->value,
-            'is_main' => $goal->isMain,
+            'is_main' => (int) $goal->isMain,
         ]);
     }
 

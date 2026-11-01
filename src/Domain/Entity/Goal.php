@@ -25,7 +25,7 @@ class Goal
         int $userId,
         int|string $targetAmount,
         int|string $monthlyTarget,
-        bool $isMain,
+        bool $isMain = false,
         ?DateTimeImmutable $createdAt = new DateTimeImmutable(),
         ?History $history = new History([]),
         ?int $id = null
