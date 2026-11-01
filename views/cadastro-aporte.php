@@ -14,7 +14,7 @@ require dirname(__DIR__) . '/views/components/header.php';
 
 <body>
     <div class="container">
-        <form class="card" method="POST" action="/deposits">
+        <form class="card" method="POST" action="/deposits" id="submit-form">
             <h2 class="card-title">Novo aporte</h2>
             <div class="form-group">
                 <label for="goalId">Meta</label>
@@ -42,7 +42,7 @@ require dirname(__DIR__) . '/views/components/header.php';
                     autocomplete="off"
                     required>
             </div>
-            <button type="submit">Registrar aporte</button>
+            <button type="submit" id="submit-button">Registrar aporte</button>
         </form>
     </div>
 
@@ -61,6 +61,7 @@ require dirname(__DIR__) . '/views/components/header.php';
             });
         }
     </script>
+    <script src="/assets/js/submitForm.js"></script>
 </body>
 
 </html>

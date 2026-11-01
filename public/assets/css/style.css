@@ -243,6 +243,10 @@ button:hover {
     background: #15803d;
 }
 
+button:disabled {
+    opacity: 0.5;
+}
+
 .alert {
     padding: 14px;
     margin: 16 0;

@@ -20,7 +20,7 @@ require dirname(__DIR__) . '/views/components/header.php';
                     <h1>Criar conta</h1>
                 </div>
             </div>
-            <form action="/register" method="POST">
+            <form action="/register" method="POST" id="submit-form">
                 <div class="form-group">
                     <label for="name">Nome</label>
                     <input
@@ -81,6 +81,7 @@ require dirname(__DIR__) . '/views/components/header.php';
     </main>
 
     <script src="/assets/js/showPassword.js"></script>
+    <script src="/assets/js/submitForm.js"></script>
 </body>
 
 </html>

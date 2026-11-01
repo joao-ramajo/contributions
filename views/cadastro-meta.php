@@ -7,15 +7,17 @@ unset($_SESSION['error']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Metas</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+
 <body>
     <div class="container">
-        <form class="card" method="POST" action="/goals">
+        <form class="card" method="POST" action="/goals" id="submit-form">
             <h2 class="card-title">Nova meta</h2>
             <div class="form-group">
                 <label for="name">Nome da meta</label>
@@ -70,5 +72,7 @@ unset($_SESSION['error']);
         </form>
     </div>
     <script src="/assets/js/moneyInput.js"></script>
+    <script src="/assets/js/submitForm.js"></script>
 </body>
+
 </html>
