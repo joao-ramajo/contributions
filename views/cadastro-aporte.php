@@ -47,6 +47,20 @@ require dirname(__DIR__) . '/views/components/header.php';
     </div>
 
     <script src="/assets/js/moneyInput.js"></script>
+    <script>
+        let params = new URLSearchParams(document.location.search);
+        let goalId = params.get("meta");
+        const goalSelect = document.getElementById("goalId");
+        const options = Array.from(goalSelect.options);
+
+        if (goalId !== null) {
+            options.forEach(option => {
+                if (option.value === goalId) {
+                    goalSelect.value = goalId;
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

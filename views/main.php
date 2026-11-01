@@ -1,25 +1,24 @@
-
 <?php
 $currentPage = 'home';
 require dirname(__DIR__) . '/views/components/header.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Metas</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-
 <body>
-
     <div class="container">
-
         <section class="card">
-            <h2 class="card-title"><?= htmlspecialchars($goal->name) ?></h2>
+            <div class="card-header">
+                <h2 class="card-title"><?= htmlspecialchars($goal->name) ?></h2>
+                <a href="/cadastrar/aporte?meta=<?= htmlspecialchars($goal->id) ?>" class="button-link">
+                    Registrar aporte
+                </a>
+            </div>
             <div class="goal-name">
                 <?= htmlspecialchars($goal->goal) ?>
             </div>
@@ -77,7 +76,6 @@ require dirname(__DIR__) . '/views/components/header.php';
                         <th>Valor</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <?php foreach ($goal->history->items as $deposit): ?>
                         <tr>
@@ -90,10 +88,8 @@ require dirname(__DIR__) . '/views/components/header.php';
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-
             </table>
         </section>
     </div>
 </body>
-
 </html>

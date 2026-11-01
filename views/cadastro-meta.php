@@ -5,24 +5,18 @@ require dirname(__DIR__) . '/views/components/header.php';
 $error = $_SESSION['error'] ?? null;
 unset($_SESSION['error']);
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Metas</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-
 <body>
     <div class="container">
-
-
         <form class="card" method="POST" action="/goals">
             <h2 class="card-title">Nova meta</h2>
-
             <div class="form-group">
                 <label for="name">Nome da meta</label>
                 <input
@@ -33,7 +27,6 @@ unset($_SESSION['error']);
                     autocomplete="off"
                     required>
             </div>
-
             <div class="form-group">
                 <label for="targetAmount">Valor objetivo (R$)</label>
                 <input
@@ -46,7 +39,6 @@ unset($_SESSION['error']);
                     autocomplete="off"
                     required>
             </div>
-
             <div class="form-group">
                 <label for="monthlyTarget">Aporte mensal (R$)</label>
                 <input
@@ -59,7 +51,6 @@ unset($_SESSION['error']);
                     autocomplete="off"
                     required>
             </div>
-
             <div class="form-group checkbox-group">
                 <label for="isMain">
                     <input
@@ -70,7 +61,6 @@ unset($_SESSION['error']);
                     Definir como meta principal
                 </label>
             </div>
-
             <button type="submit">Cadastrar meta</button>
             <?php if ($error): ?>
                 <div class="alert alert-error">
@@ -79,8 +69,6 @@ unset($_SESSION['error']);
             <?php endif; ?>
         </form>
     </div>
-
     <script src="/assets/js/moneyInput.js"></script>
 </body>
-
 </html>
