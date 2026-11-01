@@ -10,7 +10,7 @@ interface GoalRepository
 {
     public function persist(Goal $goal): void;
 
-    public function getMain(): Goal;
+    public function getMain(int $userId): Goal;
 
     public function getById(int $userId, int $goalId): Goal;
 

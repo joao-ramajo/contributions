@@ -17,7 +17,7 @@ class LoadGoalUseCase
     public function execute(int $userId, ?int $id = null): Goal
     {
         if (!$id) {
-            return $this->goalRepository->getMain();
+            return $this->goalRepository->getMain($userId);
         }
 
         return $this->goalRepository->getById(

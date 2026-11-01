@@ -59,7 +59,7 @@ class MySqlGoalRepository implements GoalRepository
         );
 
         $statement->execute([
-            'user_id' => 1,
+            'user_id' => $goal->userId,
             'name' => $goal->name,
             'target_amount' => $goal->targetAmount->value,
             'monthly_target' => $goal->monthlyTarget->value,
@@ -67,13 +67,15 @@ class MySqlGoalRepository implements GoalRepository
         ]);
     }
 
-    public function getMain(): Goal
+    public function getMain(int $userId): Goal
     {
         $stmt = $this->connection->prepare(
-            'SELECT * FROM goals WHERE is_main = TRUE LIMIT 1'
+            'SELECT * FROM goals WHERE is_main = TRUE AND user_id = :userId LIMIT 1'
         );
 
-        $stmt->execute();
+        $stmt->execute([
+            'userId' => $userId
+        ]);
 
         $data = $stmt->fetch();
 

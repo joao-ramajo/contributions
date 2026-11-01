@@ -17,7 +17,7 @@ class CreateGoalUseCase
 
     public function execute(CreateGoalInput $input): void
     {
-        $this->ensureUserHasNoMainGoal($input->isMain);
+        $this->ensureUserHasNoMainGoal($input->userId);
 
         $goal = Goal::create(
             userId: $input->userId,
@@ -30,14 +30,10 @@ class CreateGoalUseCase
         $this->goalRepository->persist($goal);
     }
 
-    private function ensureUserHasNoMainGoal(bool $isMain): void
+    private function ensureUserHasNoMainGoal(int $userId): void
     {
-        if (!$isMain) {
-            return;
-        }
-
         try {
-            $this->goalRepository->getMain();
+            $this->goalRepository->getMain($userId);
         } catch (GoalException) {
             return;
         }
