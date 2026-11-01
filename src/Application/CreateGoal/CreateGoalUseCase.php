@@ -18,9 +18,8 @@ class CreateGoalUseCase
     {
         $this->ensureUserHasNoMainGoal($input->isMain);
 
-        $id = random_int(1, PHP_INT_MAX);;
         $goal = Goal::create(
-            id: $id,
+            userId: $input->userId,
             name: $input->name,
             targetAmount: $input->targetAmount,
             monthlyTarget: $input->monthlyTarget,

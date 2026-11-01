@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Controller;
 
 use App\Application\LoadGoalList\LoadGoalListUseCase;
+use App\Domain\Entity\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -18,7 +19,9 @@ class GetGoalList
         ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
-        $goals = $this->loadGoalListUseCase->execute();
+        $userId = $request->getAttribute('userId');
+
+        $goals = $this->loadGoalListUseCase->execute($userId);
 
 
         ob_start();

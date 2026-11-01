@@ -14,5 +14,5 @@ interface GoalRepository
 
     public function getById(int $id): Goal;
 
-    public function findAll(): array;
+    public function findAllByUserId(int $id): array;
 }

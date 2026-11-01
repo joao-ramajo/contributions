@@ -5,33 +5,40 @@ declare(strict_types=1);
 namespace App\Domain\Entity;
 
 use App\Domain\ValueObject\Money;
+use DateTimeImmutable;
 
 class Goal
 {
     public function __construct(
         private(set) ?int $id,
+        private(set) int $userId,
         private(set) string $name,
         private(set) Money $targetAmount,
         private(set) Money $monthlyTarget,
         private(set) bool $isMain,
-        private(set) History $history
+        private(set) History $history,
+        private(set) DateTimeImmutable $createdAt
     ) {}
 
     public static function create(
         string $name,
+        int $userId,
         int|string $targetAmount,
         int|string $monthlyTarget,
         bool $isMain,
+        ?DateTimeImmutable $createdAt = new DateTimeImmutable(),
         ?History $history = new History([]),
         ?int $id = null
     ): self {
         return new self(
             $id,
+            $userId,
             $name,
             Money::create($targetAmount),
             Money::create($monthlyTarget),
             $isMain,
-            $history
+            $history,
+            $createdAt
         );
     }
 

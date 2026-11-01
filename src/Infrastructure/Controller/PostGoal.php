@@ -26,14 +26,15 @@ class PostGoal
         ResponseInterface $response,
     ): ResponseInterface {
         try {
+            $userId = $request->getAttribute('userId');
             $request = PostGoalRequest::fromArray($request->getParsedBody());
 
 
-            $this->useCase->execute(new CreateGoalInput($request->name, $request->targetAmount, $request->monthlyTarget, $request->isMain));
+            $this->useCase->execute(new CreateGoalInput($request->name, $request->targetAmount, $request->monthlyTarget, $request->isMain, $userId));
 
             return $response
                 ->withStatus(303)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', '/metas');
         } catch (DomainException $exception) {
             $_SESSION['error'] = $exception->getMessage();
 

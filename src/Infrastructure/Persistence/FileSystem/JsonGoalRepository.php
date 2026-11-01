@@ -125,7 +125,7 @@ class JsonGoalRepository implements GoalRepository
         return $goal;
     }
 
-    public function findAll(): array
+    public function findAllByUserId(int $userId): array
     {
         $file = json_decode(file_get_contents($this->db));
 

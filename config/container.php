@@ -7,20 +7,13 @@ use App\Domain\Interfaces\GoalRepository;
 use App\Domain\Interfaces\UserRepository;
 use App\Infrastructure\Persistence\FileSystem\JsonDepositRepository;
 use App\Infrastructure\Persistence\FileSystem\JsonGoalRepository;
+use App\Infrastructure\Persistence\MySQL\MySqlGoalRepository;
 use App\Infrastructure\Persistence\MySQL\MySqlUserRepository;
 use DI\Container;
 use Slim\App;
 
-return static function (Container $container): void {
-    $container->set(
-        GoalRepository::class,
-        new JsonGoalRepository(dirname(__DIR__) . '/var/db.json')
-    );
-    $container->set(
-        DepositRepository::class,
-        new JsonDepositRepository(dirname(__DIR__) . '/var/db.json')
-    );
 
+return static function (Container $container): void {
     $pdo = new PDO(
         sprintf(
             'mysql:host=%s;port=%s;dbname=%s;charset=utf8mb4',
@@ -35,6 +28,15 @@ return static function (Container $container): void {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ]
+    );
+
+    $container->set(
+        GoalRepository::class,
+        new MySqlGoalRepository($pdo)
+    );
+    $container->set(
+        DepositRepository::class,
+        new JsonDepositRepository(dirname(__DIR__) . '/var/db.json')
     );
 
     $container->set(

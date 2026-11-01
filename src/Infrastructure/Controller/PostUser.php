@@ -34,7 +34,7 @@ class PostUser
 
             return $response
                 ->withStatus(303)
-                ->withHeader('Location', '/');
+                ->withHeader('Location', '/login');
         } catch (Throwable $exception) {
             echo "erro: " . $exception->getMessage();
             die();

@@ -10,6 +10,7 @@ readonly class CreateGoalInput
         public string $name,
         public string $targetAmount,
         public string $monthlyTarget,
-        public bool $isMain
+        public bool $isMain,
+        public int $userId
     ) {}
 }

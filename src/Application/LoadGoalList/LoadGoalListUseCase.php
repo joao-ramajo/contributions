@@ -12,8 +12,8 @@ class LoadGoalListUseCase
         private readonly GoalRepository $goalRepository
     ) {}
 
-    public function execute(): array
+    public function execute(int $userId): array
     {
-        return $this->goalRepository->findAll();
+        return $this->goalRepository->findAllByUserId($userId);
     }
 }

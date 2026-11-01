@@ -13,6 +13,7 @@ CREATE TABLE goals (
     target_amount BIGINT NOT NULL,
     monthly_target BIGINT NOT NULL,
     is_main BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
