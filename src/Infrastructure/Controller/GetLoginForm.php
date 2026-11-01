@@ -6,7 +6,6 @@ namespace App\Infrastructure\Controller;
 
 use App\Core\View;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 class GetLoginForm
 {

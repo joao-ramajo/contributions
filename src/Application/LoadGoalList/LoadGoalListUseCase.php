@@ -10,7 +10,8 @@ class LoadGoalListUseCase
 {
     public function __construct(
         private readonly GoalRepository $goalRepository
-    ) {}
+    ) {
+    }
 
     public function execute(int $userId): array
     {

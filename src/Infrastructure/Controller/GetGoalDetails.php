@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Controller;
 
-use App\Application\LoadDepositList\LoadDepositListUseCase;
 use App\Application\LoadGoal\LoadGoalUseCase;
-use App\Application\LoadGoalList\LoadGoalListUseCase;
 use App\Core\View;
-use App\Domain\Entity\Util;
 use DateTimeImmutable;
 use IntlDateFormatter;
 use Psr\Http\Message\ResponseInterface;
@@ -18,7 +15,8 @@ class GetGoalDetails
 {
     public function __construct(
         private readonly LoadGoalUseCase $loadGoalUseCase,
-    ) {}
+    ) {
+    }
 
     public function __invoke(
         ServerRequestInterface $request,

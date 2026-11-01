@@ -12,8 +12,8 @@ class MySqlDepositRepository implements DepositRepository
 {
     public function __construct(
         private readonly PDO $connection
-    ) {}
-
+    ) {
+    }
 
     public function persist(Deposit $deposit): void
     {
@@ -55,7 +55,6 @@ class MySqlDepositRepository implements DepositRepository
         ]);
     }
 
-
     public function findAllByMain(): array
     {
         $stmt = $this->connection->query(
@@ -66,7 +65,7 @@ class MySqlDepositRepository implements DepositRepository
         );
 
         return array_map(
-            fn(array $data): Deposit => Deposit::create(
+            fn (array $data): Deposit => Deposit::create(
                 id: (int) $data['id'],
                 goalId: (int) $data['goal_id'],
                 amount: $data['amount'],

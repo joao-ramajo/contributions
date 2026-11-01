@@ -8,5 +8,6 @@ readonly class LoginOutput
 {
     public function __construct(
         public int $userId
-    ) {}
+    ) {
+    }
 }

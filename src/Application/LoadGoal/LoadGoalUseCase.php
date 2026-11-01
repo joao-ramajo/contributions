@@ -11,7 +11,8 @@ class LoadGoalUseCase
 {
     public function __construct(
         private readonly GoalRepository $goalRepository
-    ) {}
+    ) {
+    }
 
     public function execute(int $userId, ?int $id = null): Goal
     {

@@ -14,7 +14,8 @@ class User
         private(set) string $email,
         private(set) string $password,
         private(set) DateTimeImmutable $createdAt
-    ) {}
+    ) {
+    }
 
     public static function create(
         string $name,

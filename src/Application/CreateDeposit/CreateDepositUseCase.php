@@ -13,7 +13,8 @@ class CreateDepositUseCase
     public function __construct(
         private readonly DepositRepository $depositRepository,
         private readonly GoalRepository $goalRepository
-    ) {}
+    ) {
+    }
 
     public function execute(CreateDepositInput $input): void
     {

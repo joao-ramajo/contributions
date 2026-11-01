@@ -8,7 +8,8 @@ final readonly class Money
 {
     public function __construct(
         public int $value
-    ) {}
+    ) {
+    }
 
     public static function create(int|string $value): self
     {

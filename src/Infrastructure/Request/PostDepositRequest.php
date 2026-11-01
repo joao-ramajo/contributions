@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Request;
 
-use App\Domain\Entity\Util;
 use DateTimeImmutable;
 use InvalidArgumentException;
 
@@ -14,7 +13,8 @@ readonly class PostDepositRequest
         public int $goalId,
         public string $amount,
         public DateTimeImmutable $date
-    ) {}
+    ) {
+    }
 
     public static function fromArray(array $data): self
     {

@@ -13,7 +13,8 @@ class GetGoalList
 {
     public function __construct(
         private readonly LoadGoalListUseCase $loadGoalListUseCase,
-    ) {}
+    ) {
+    }
 
     public function __invoke(
         ServerRequestInterface $request,

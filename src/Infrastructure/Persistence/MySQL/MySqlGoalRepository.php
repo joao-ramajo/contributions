@@ -7,7 +7,6 @@ namespace App\Infrastructure\Persistence\MySQL;
 use App\Domain\Entity\Deposit;
 use App\Domain\Entity\Goal;
 use App\Domain\Entity\History;
-use App\Domain\Entity\Util;
 use App\Domain\Exceptions\GoalException;
 use App\Domain\Interfaces\GoalRepository;
 use DateTimeImmutable;
@@ -17,7 +16,8 @@ class MySqlGoalRepository implements GoalRepository
 {
     public function __construct(
         private PDO $connection
-    ) {}
+    ) {
+    }
 
     public function persist(Goal $goal): void
     {

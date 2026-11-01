@@ -18,7 +18,8 @@ class Goal
         private(set) bool $isMain,
         private(set) History $history,
         private(set) DateTimeImmutable $createdAt
-    ) {}
+    ) {
+    }
 
     public static function create(
         string $name,
@@ -78,7 +79,8 @@ class Goal
 
         return (int) ceil(
             $this->pendingAmount()->value / $this->monthlyTarget->value
-        );;
+        );
+        ;
     }
 
     public function toArray(): array

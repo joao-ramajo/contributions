@@ -12,7 +12,8 @@ class LoginUseCase
 {
     public function __construct(
         private readonly UserRepository $userRepository
-    ) {}
+    ) {
+    }
 
     public function execute(LoginInput $input)
     {

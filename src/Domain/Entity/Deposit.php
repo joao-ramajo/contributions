@@ -14,7 +14,8 @@ class Deposit
         private(set) int $goalId,
         private(set) DateTimeImmutable $date,
         private(set) Money $amount
-    ) {}
+    ) {
+    }
 
     public static function create(int $goalId, DateTimeImmutable $date, int|string $amount, ?int $id = null): self
     {

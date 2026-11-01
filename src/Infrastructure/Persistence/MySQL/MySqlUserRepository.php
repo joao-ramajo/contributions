@@ -7,14 +7,14 @@ namespace App\Infrastructure\Persistence\MySQL;
 use App\Domain\Entity\User;
 use App\Domain\Interfaces\UserRepository;
 use DateTimeImmutable;
-use Override;
 use PDO;
 
 class MySqlUserRepository implements UserRepository
 {
     public function __construct(
         private PDO $connection
-    ) {}
+    ) {
+    }
 
     public function persist(User $user): void
     {

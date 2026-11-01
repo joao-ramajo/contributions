@@ -13,5 +13,6 @@ readonly class CreateDepositInput
         public int $goalId,
         public string $amount,
         public DateTimeImmutable $date
-    ) {}
+    ) {
+    }
 }

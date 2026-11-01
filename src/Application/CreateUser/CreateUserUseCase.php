@@ -13,8 +13,8 @@ class CreateUserUseCase
 {
     public function __construct(
         private readonly UserRepository $userRepository
-    ) {}
-
+    ) {
+    }
 
     public function execute(CreateUserInput $input): void
     {

@@ -11,5 +11,6 @@ readonly class CreateUserInput
         public string $email,
         public string $password,
         public string $passwordConfirmation
-    ) {}
+    ) {
+    }
 }

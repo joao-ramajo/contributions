@@ -9,13 +9,13 @@ use App\Application\CreateDeposit\CreateDepositUseCase;
 use App\Infrastructure\Request\PostDepositRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Throwable;
 
 class PostDeposit
 {
     public function __construct(
         private readonly CreateDepositUseCase $createDeposit
-    ) {}
+    ) {
+    }
 
     public function __invoke(
         ServerRequestInterface $request,

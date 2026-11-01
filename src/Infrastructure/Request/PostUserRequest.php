@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Request;
 
-use App\Domain\Exceptions\UserException;
 use InvalidArgumentException;
 
 readonly class PostUserRequest
@@ -14,7 +13,8 @@ readonly class PostUserRequest
         public string $email,
         public string $password,
         public string $passwordConfirmation
-    ) {}
+    ) {
+    }
 
     public static function fromArray(array $data): self
     {

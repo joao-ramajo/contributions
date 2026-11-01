@@ -13,13 +13,14 @@ class History
      */
     public function __construct(
         private(set) array $items
-    ) {}
+    ) {
+    }
 
     public function totalAmount(): Money
     {
         $total = array_reduce(
             $this->items,
-            fn(int $total, Deposit $deposit): int =>
+            fn (int $total, Deposit $deposit): int =>
             $total + $deposit->amount->value,
             0
         );

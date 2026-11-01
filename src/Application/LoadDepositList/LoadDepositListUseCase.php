@@ -10,7 +10,8 @@ class LoadDepositListUseCase
 {
     public function __construct(
         private readonly DepositRepository $depositRepostiry
-    ) {}
+    ) {
+    }
 
     public function execute(): array
     {

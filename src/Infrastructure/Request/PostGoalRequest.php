@@ -13,7 +13,8 @@ readonly class PostGoalRequest
         public string $targetAmount,
         public string $monthlyTarget,
         public bool $isMain
-    ) {}
+    ) {
+    }
 
     public static function fromArray(array $data): self
     {
