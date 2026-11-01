@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence\FileSystem;
 use App\Domain\Entity\Deposit;
 use App\Domain\Entity\Goal;
 use App\Domain\Entity\History;
+use App\Domain\Exceptions\GoalException;
 use App\Domain\Interfaces\GoalRepository;
 use DateTimeImmutable;
 use DomainException;
@@ -68,7 +69,7 @@ class JsonGoalRepository implements GoalRepository
         }
 
         if (!$goal) {
-            throw new DomainException("Meta não encontrada", 404);
+            throw new GoalException("Meta não encontrada", 404);
         }
 
         foreach ($file->deposits as $item) {

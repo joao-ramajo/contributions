@@ -1,6 +1,9 @@
 <?php
 $currentPage = 'cadastro-meta';
 require dirname(__DIR__) . '/views/components/header.php';
+
+$error = $_SESSION['error'] ?? null;
+unset($_SESSION['error']);
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +70,11 @@ require dirname(__DIR__) . '/views/components/header.php';
             </div>
 
             <button type="submit">Cadastrar meta</button>
+            <?php if ($error): ?>
+                <div class="alert alert-error">
+                    <?= htmlspecialchars($error) ?>
+                </div>
+            <?php endif; ?>
         </form>
     </div>
 

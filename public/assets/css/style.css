@@ -233,3 +233,16 @@ button {
 button:hover {
     background: #15803d;
 }
+
+.alert {
+    padding: 14px;
+    margin: 16 0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}

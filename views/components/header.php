@@ -2,7 +2,10 @@
     <a href="/" class="navbar-brand">Contributions</a>
     <nav>
         <a href="/" class="<?= $currentPage === 'home' ? 'active' : '' ?>">
-            Visão geral
+            Meta principal
+        </a>
+        <a href="/metas" class="<?= $currentPage === 'metas' ? 'active' : '' ?>">
+            Metas
         </a>
         <a href="/cadastro/meta" class="<?= $currentPage === 'cadastro-meta' ? 'active' : '' ?>">
             Cadastrar meta

@@ -10,6 +10,7 @@ use App\Domain\Entity\Deposit;
 use App\Domain\Entity\Goal;
 use App\Infrastructure\Request\PostGoalRequest;
 use DateTimeImmutable;
+use DomainException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
@@ -33,6 +34,12 @@ class PostGoal
             return $response
                 ->withStatus(303)
                 ->withHeader('Location', '/');
+        } catch (DomainException $exception) {
+            $_SESSION['error'] = $exception->getMessage();
+
+            return $response
+                ->withHeader('Location', '/cadastro/meta')
+                ->withStatus(303);
         } catch (Throwable $exception) {
             echo "erro: " . $exception->getMessage();
             die();

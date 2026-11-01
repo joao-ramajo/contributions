@@ -14,6 +14,8 @@ date_default_timezone_set('America/Sao_Paulo');
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+session_start();
+
 $builder = new ContainerBuilder();
 
 $container = $builder->build();

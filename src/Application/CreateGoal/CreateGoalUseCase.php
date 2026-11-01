@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Application\CreateGoal;
 
 use App\Domain\Entity\Goal;
+use App\Domain\Exceptions\GoalException;
 use App\Domain\Interfaces\GoalRepository;
 
 class CreateGoalUseCase
@@ -15,6 +16,8 @@ class CreateGoalUseCase
 
     public function execute(CreateGoalInput $input): void
     {
+        $this->ensureUserHasNoMainGoal($input->isMain);
+
         $id = random_int(1, PHP_INT_MAX);;
         $goal = Goal::create(
             id: $id,
@@ -25,5 +28,20 @@ class CreateGoalUseCase
         );
 
         $this->goalRepository->persist($goal);
+    }
+
+    private function ensureUserHasNoMainGoal(bool $isMain): void
+    {
+        if (!$isMain) {
+            return;
+        }
+
+        try {
+            $this->goalRepository->getMain();
+        } catch (GoalException) {
+            return;
+        }
+
+        throw new GoalException('Você já possui uma meta principal cadastrada', 400);
     }
 }
