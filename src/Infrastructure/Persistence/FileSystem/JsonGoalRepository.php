@@ -87,6 +87,44 @@ class JsonGoalRepository implements GoalRepository
         return $goal;
     }
 
+    public function getById(int $id): Goal
+    {
+        $file = json_decode(file_get_contents($this->db));
+        $goal = null;
+
+        foreach ($file->goals as $item) {
+            if ($item->id === $id) {
+                $goal = Goal::create(
+                    id: $item->id,
+                    name: $item->name,
+                    targetAmount: $item->targetAmount,
+                    monthlyTarget: $item->monthlyTarget,
+                    isMain: $item->isMain,
+                    history: new History([])
+                );
+
+                break;
+            }
+        }
+
+        if (!$goal) {
+            throw new GoalException("Meta não encontrada", 404);
+        }
+
+        foreach ($file->deposits ?? [] as $item) {
+            if ($item->goalId === $goal->id) {
+                $goal->increment(Deposit::create(
+                    id: $item->id,
+                    goalId: $item->goalId,
+                    amount: $item->amount,
+                    date: new DateTimeImmutable($item->date)
+                ));
+            }
+        }
+
+        return $goal;
+    }
+
     public function findAll(): array
     {
         $file = json_decode(file_get_contents($this->db));

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Infrastructure\Controller\GetDepositForm;
+use App\Infrastructure\Controller\GetGoalDetails;
 use App\Infrastructure\Controller\GetGoalForm;
 use App\Infrastructure\Controller\GetGoalList;
 use App\Infrastructure\Controller\HomeController;
@@ -26,10 +27,11 @@ $configureContainer($container);
 
 $app = Bridge::create($container);
 
-$app->get('/', HomeController::class);
-$app->get('/cadastro/meta', GetGoalForm::class);
-$app->get('/cadastro/aporte', GetDepositForm::class);
+$app->get('/', GetGoalList::class);
+$app->get('/cadastrar/meta', GetGoalForm::class);
+$app->get('/cadastrar/aporte', GetDepositForm::class);
 $app->get('/metas', GetGoalList::class);
+$app->get('/metas/{id}', GetGoalDetails::class);
 $app->post('/goals', PostGoal::class);
 $app->post('/deposits', PostDeposit::class);
 

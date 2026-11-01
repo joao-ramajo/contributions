@@ -12,5 +12,7 @@ interface GoalRepository
 
     public function getMain(): Goal;
 
+    public function getById(int $id): Goal;
+
     public function findAll(): array;
 }

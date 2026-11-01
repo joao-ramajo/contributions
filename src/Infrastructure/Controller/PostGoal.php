@@ -38,7 +38,7 @@ class PostGoal
             $_SESSION['error'] = $exception->getMessage();
 
             return $response
-                ->withHeader('Location', '/cadastro/meta')
+                ->withHeader('Location', '/cadastrar/meta')
                 ->withStatus(303);
         } catch (Throwable $exception) {
             echo "erro: " . $exception->getMessage();

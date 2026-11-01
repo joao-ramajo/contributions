@@ -20,7 +20,7 @@ require dirname(__DIR__) . '/views/components/header.php';
                 <p>Acompanhe o progresso das suas metas financeiras.</p>
             </div>
 
-            <a href="/goals/new" class="button-link">
+            <a href="/cadastrar/meta" class="button-link">
                 Nova meta
             </a>
         </header>
