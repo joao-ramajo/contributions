@@ -37,24 +37,26 @@ unset($_SESSION['error']);
             <div class="form-group">
                 <label for="targetAmount">Valor objetivo (R$)</label>
                 <input
-                    type="number"
+                    type="text"
                     id="targetAmount"
                     name="targetAmount"
-                    placeholder="Ex: 60000.00"
-                    min="0.01"
-                    step="0.01"
+                    placeholder="R$ 5000,00"
+                    class="money-input"
+                    inputmode="numeric"
+                    autocomplete="off"
                     required>
             </div>
 
             <div class="form-group">
                 <label for="monthlyTarget">Aporte mensal (R$)</label>
                 <input
-                    type="number"
+                    type="text"
                     id="monthlyTarget"
                     name="monthlyTarget"
-                    placeholder="Ex: 600.00"
-                    min="0.01"
-                    step="0.01"
+                    class="money-input"
+                    placeholder="R$ 10,00"
+                    inputmode="numeric"
+                    autocomplete="off"
                     required>
             </div>
 
@@ -78,6 +80,7 @@ unset($_SESSION['error']);
         </form>
     </div>
 
+    <script src="/assets/js/moneyInput.js"></script>
 </body>
 
 </html>

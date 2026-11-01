@@ -27,9 +27,7 @@ class GetGoalDetails
 
         $goal = $this->loadGoalUseCase->execute($id);
 
-        $monthsRemaining = (int) ceil(
-            $goal->pendingAmount()->value / $goal->monthlyTarget->value
-        );
+        $monthsRemaining = $goal->monthsRemaining();
 
         $years = intdiv($monthsRemaining, 12);
         $months = $monthsRemaining % 12;

@@ -19,8 +19,8 @@ class Goal
 
     public static function create(
         string $name,
-        int $targetAmount,
-        int $monthlyTarget,
+        int|string $targetAmount,
+        int|string $monthlyTarget,
         bool $isMain,
         ?History $history = new History([]),
         ?int $id = null
@@ -28,8 +28,8 @@ class Goal
         return new self(
             $id,
             $name,
-            new Money($targetAmount),
-            new Money($monthlyTarget),
+            Money::create($targetAmount),
+            Money::create($monthlyTarget),
             $isMain,
             $history
         );
@@ -61,6 +61,17 @@ class Goal
     public function increment(Deposit $deposit): void
     {
         $this->history->add($deposit);
+    }
+
+    public function monthsRemaining(): int
+    {
+        if ($this->pendingAmount()->value === 0) {
+            return 0;
+        }
+
+        return (int) ceil(
+            $this->pendingAmount()->value / $this->monthlyTarget->value
+        );;
     }
 
     public function toArray(): array

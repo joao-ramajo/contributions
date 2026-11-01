@@ -10,7 +10,7 @@ readonly class CreateDepositInput
 {
     public function __construct(
         public int $goalId,
-        public int $amount,
+        public string $amount,
         public DateTimeImmutable $date
     ) {}
 }

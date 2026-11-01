@@ -16,9 +16,9 @@ class Deposit
         private(set) Money $amount
     ) {}
 
-    public static function create(int $goalId, DateTimeImmutable $date, int $amount, ?int $id = null): self
+    public static function create(int $goalId, DateTimeImmutable $date, int|string $amount, ?int $id = null): self
     {
-        return new self($id, $goalId, $date, new Money($amount));
+        return new self($id, $goalId, $date, Money::create($amount));
     }
 
     public function toArray(): array

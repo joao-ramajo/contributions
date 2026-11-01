@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Request;
 
+use App\Domain\Entity\Util;
 use DateTimeImmutable;
 use InvalidArgumentException;
 
@@ -11,7 +12,7 @@ readonly class PostDepositRequest
 {
     public function __construct(
         public int $goalId,
-        public int $amount,
+        public string $amount,
         public DateTimeImmutable $date
     ) {}
 
@@ -21,9 +22,8 @@ readonly class PostDepositRequest
         $date = $data['date'] ?? throw new InvalidArgumentException('É necessario informar uma data válida');
         $amount = $data['amount'] ?? throw new InvalidArgumentException('É necesário informar um valor válido');
 
-
         $goalId = (int) $goalId;
-        $amount = (int) round((float) $amount * 100);
+
         $date = new DateTimeImmutable($date);
 
         return new self(

@@ -32,12 +32,21 @@ require dirname(__DIR__) . '/views/components/header.php';
             </div>
             <div class="form-group">
                 <label for="amount">Valor do aporte (R$)</label>
-                <input type="number" id="amount" name="amount" placeholder="Ex: 500.00" min="0.01" step="0.01" autocomplete="off" required>
+                <input
+                    type="text"
+                    id="amount"
+                    name="amount"
+                    class="money-input"
+                    placeholder="R$ 0,00"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    required>
             </div>
             <button type="submit">Registrar aporte</button>
         </form>
     </div>
 
+    <script src="/assets/js/moneyInput.js"></script>
 </body>
 
 </html>

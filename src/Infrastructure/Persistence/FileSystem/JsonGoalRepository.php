@@ -60,7 +60,7 @@ class JsonGoalRepository implements GoalRepository
                 $goal = Goal::create(
                     id: $item->id,
                     name: $item->name,
-                    targetAmount: $item->targetAmount,
+                    targetAmount: (string) $item->targetAmount,
                     monthlyTarget: $item->monthlyTarget,
                     isMain: $item->isMain,
                     history: new History([])
