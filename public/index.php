@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Infrastructure\Controller\HomeController;
+use App\Infrastructure\Controller\PostDeposit;
+use App\Infrastructure\Controller\PostGoal;
+use DI\ContainerBuilder;
+use DI\Bridge\Slim\Bridge;
+
+date_default_timezone_set('America/Sao_Paulo');
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+$builder = new ContainerBuilder();
+
+$container = $builder->build();
+
+$configureContainer = require dirname(__DIR__) . '/config/container.php';
+$configureContainer($container);
+
+$app = Bridge::create($container);
+
+$app->get('/', HomeController::class);
+$app->post('/goals', PostGoal::class);
+$app->post('/deposits', PostDeposit::class);
+
+$app->run();

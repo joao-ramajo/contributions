@@ -1,0 +1,76 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Domain\Entity;
+
+use App\Domain\ValueObject\Money;
+
+class Goal
+{
+    public function __construct(
+        private(set) ?int $id,
+        private(set) string $name,
+        private(set) Money $targetAmount,
+        private(set) Money $monthlyTarget,
+        private(set) bool $isMain,
+        private(set) History $history
+    ) {}
+
+    public static function create(
+        string $name,
+        int $targetAmount,
+        int $monthlyTarget,
+        bool $isMain,
+        ?History $history = new History([]),
+        ?int $id = null
+    ): self {
+        return new self(
+            $id,
+            $name,
+            new Money($targetAmount),
+            new Money($monthlyTarget),
+            $isMain,
+            $history
+        );
+    }
+
+    public function progress(): int
+    {
+        if ($this->targetAmount->value === 0) {
+            return 0;
+        }
+
+        $actualAmount = $this->history->totalAmount();
+
+        return (int) round(
+            ($actualAmount->value / $this->targetAmount->value) * 100
+        );
+    }
+
+    public function actualAmount(): Money
+    {
+        return $this->history->totalAmount();
+    }
+
+    public function pendingAmount(): Money
+    {
+        return new Money($this->targetAmount->value - $this->history->totalAmount()->value);
+    }
+
+    public function increment(Deposit $deposit): void
+    {
+        $this->history->add($deposit);
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'targetAmount' => $this->targetAmount->value,
+            'monthlyTarget' => $this->monthlyTarget->value,
+            'isMain' => $this->isMain
+        ];
+    }
+}
