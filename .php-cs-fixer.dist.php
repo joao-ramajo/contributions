@@ -8,13 +8,25 @@ $finder = PhpCsFixer\Finder::create()
 return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PER-CS' => true,
-        '@PHP85Migration' => true,
-        'declare_strict_types' => true,
-        'strict_param' => true,
-        'array_syntax' => ['syntax' => 'short'],
+        '@PSR12' => true,
+        'class_attributes_separation' => [
+            'elements' => [
+                'const' => 'one',
+                'property' => 'one',
+                'method' => 'one',
+            ],
+        ],
+        'method_argument_space' => [
+            'on_multiline' => 'ignore',
+        ],
+        'modifier_keywords' => false,
         'no_unused_imports' => true,
-        'ordered_imports' => true,
-        'single_line_empty_body' => true,
+        'ordered_imports' => [
+            'sort_algorithm' => 'alpha',
+        ],
+        'strict_param' => true,
+        'binary_operator_spaces' => [
+            'default' => 'single_space',
+        ],
     ])
     ->setFinder($finder);
