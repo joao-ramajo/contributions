@@ -18,7 +18,8 @@ class GetDepositForm
         ServerRequestInterface $request,
         ResponseInterface $response,
     ): ResponseInterface {
-        $goals = $this->loadGoalListUseCase->execute();
+        $userId = $request->getAttribute('userId');
+        $goals = $this->loadGoalListUseCase->execute($userId);
 
         ob_start();
 
