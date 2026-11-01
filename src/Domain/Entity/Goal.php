@@ -80,7 +80,7 @@ class Goal
         return (int) ceil(
             $this->pendingAmount()->value / $this->monthlyTarget->value
         );
-        ;
+
     }
 
     public function toArray(): array

@@ -28,5 +28,14 @@ return (new PhpCsFixer\Config())
         'binary_operator_spaces' => [
             'default' => 'single_space',
         ],
+        'no_useless_else' => true,
+        'no_useless_return' => true,
+        'no_superfluous_phpdoc_tags' => true,
+        'ordered_types' => [
+            'null_adjustment' => 'always_last',
+        ],
+        'no_useless_nullsafe_operator' => true,
+        'declare_strict_types' => true,
+        'no_empty_statement' => true,
     ])
     ->setFinder($finder);
