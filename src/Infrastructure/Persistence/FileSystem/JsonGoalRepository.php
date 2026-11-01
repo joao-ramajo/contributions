@@ -90,11 +90,35 @@ class JsonGoalRepository implements GoalRepository
     public function findAll(): array
     {
         $file = json_decode(file_get_contents($this->db));
-        $data =  $file->goals;
 
-        if ($data === null) {
-            return [];
+        $depositsByGoal = [];
+
+        foreach ($file->deposits ?? [] as $deposit) {
+            $depositsByGoal[$deposit->goalId][] = Deposit::create(
+                id: $deposit->id,
+                goalId: $deposit->goalId,
+                date: new DateTimeImmutable($deposit->date),
+                amount: $deposit->amount
+            );
         }
-        return $data;
+
+        $goals = [];
+
+        foreach ($file->goals ?? [] as $goal) {
+            $history = new History(
+                $depositsByGoal[$goal->id] ?? []
+            );
+
+            $goals[] = Goal::create(
+                id: $goal->id,
+                name: $goal->name,
+                targetAmount: $goal->targetAmount,
+                monthlyTarget: $goal->monthlyTarget,
+                isMain: $goal->isMain,
+                history: $history
+            );
+        }
+
+        return $goals;
     }
 }

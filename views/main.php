@@ -1,3 +1,4 @@
+
 <?php
 $currentPage = 'home';
 require dirname(__DIR__) . '/views/components/header.php';

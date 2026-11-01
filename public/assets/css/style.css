@@ -246,3 +246,119 @@ button:hover {
     color: #991b1b;
     border: 1px solid #fecaca;
 }
+
+/* LISTAGEM DE METAS */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+    font-size: 24px;
+}
+
+.page-header p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.goal-card {
+    display: block;
+    margin-bottom: 0;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.goal-card:hover {
+    border-color: #aaa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.goal-card:focus-visible {
+    outline: 2px solid #333;
+    outline-offset: 3px;
+}
+
+.goal-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.goal-card-header h2 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.goal-percentage {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.goal-amount {
+    margin-top: 20px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.goal-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #777;
+}
+
+.goal-card-footer a {
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.button-link {
+    padding: 11px 16px;
+    background: #16a34a;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.button-link:hover {
+    background: #15803d;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 24px;
+}
+
+.empty-state h2 {
+    font-size: 17px;
+}
+
+.empty-state p {
+    color: #777;
+    font-size: 14px;
+}
